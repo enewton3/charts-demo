@@ -1,14 +1,16 @@
 import React from "react";
 import Draggable from "react-draggable";
 import Chart from "react-google-charts";
-import ReactGridLayout from "react-grid-layout";
+import ReactGridLayout, { WidthProvider } from "react-grid-layout";
+
+const GridLayout = WidthProvider(ReactGridLayout);
 
 export default function DashboardEditor(props) {
   const { charts } = props;
 
   return (
     <div>
-      <ReactGridLayout>
+      <GridLayout layout={charts.length}>
         {charts.map((chart, index) => (
           // <Draggable key={`Chart ${index}`}>
           <div>
@@ -24,7 +26,7 @@ export default function DashboardEditor(props) {
           </div>
           // </Draggable>
         ))}
-      </ReactGridLayout>
+      </GridLayout>
     </div>
   );
 }
