@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Draggable from "react-draggable";
 import ChartOptions from "../components/ChartOptions";
 import ChartPreview from "../components/ChartPreview";
+import DashboardSelect from "../components/DashboardSelect";
 import DataInput from "../components/DataInput";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,7 +15,10 @@ const useStyles = makeStyles((theme) => ({
     width: "90vw",
     height: "100vh",
   },
-  topSection: { display: "flex", height: "20%" },
+  topSection: {
+    display: "flex",
+    height: "30%",
+  },
   saved: {
     border: "2px solid black",
     width: "50%",
@@ -25,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   bottomSection: {
     width: "100%",
-    height: "80%",
+    height: "70%",
     display: "flex",
   },
   dataInput: {
@@ -65,19 +69,25 @@ export default function EditDashboard() {
     },
   });
   const [type, setType] = useState("");
+  const [dashboards, setDashboards] = useState([
+    "CEO Dashboard",
+    "Regional Sales Dashboard",
+    "MV System Dashboard",
+    "My Personal Dashboard",
+    "Audit Dashboard",
+  ]);
 
   return (
     <div className={classes.root}>
       <div className={classes.topSection}>
         <div className={classes.saved}>Dashboard showing saved charts</div>
-        <div className={classes.select}>Dashboard Select</div>
+        <div className={classes.select}>
+          <DashboardSelect dashboards={dashboards} />
+        </div>
       </div>
       <div className={classes.bottomSection}>
         <div className={classes.dataInput}>
-          <DataInput data={data} setData={setData} />
-          <Draggable>
-            <div>Drag Me!</div>
-          </Draggable>
+          <DataInput data={data} setData={setData} type={type} />
         </div>
         <div className={classes.options}>
           <Button className={classes.button}>Add</Button>
