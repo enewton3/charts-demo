@@ -24,8 +24,8 @@ export default function ChartEdit(props) {
     vAxis: {
       title: "",
     },
-    height: 400,
-    width: 300,
+    height: "100%",
+    width: "100%",
   });
   return (
     <>
@@ -33,7 +33,6 @@ export default function ChartEdit(props) {
         className={classes.button}
         onClick={() => {
           const chart = { options: options, data: data, type: type };
-          console.log(chart);
           addChart(chart);
         }}
       >

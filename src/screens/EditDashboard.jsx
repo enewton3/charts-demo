@@ -16,19 +16,19 @@ const useStyles = makeStyles((theme) => ({
   },
   topSection: {
     display: "flex",
-    height: "30%",
+    height: "50%",
   },
   saved: {
     border: "2px solid black",
-    width: "50%",
+    width: "70%",
   },
   select: {
-    width: "50%",
+    width: "30%",
     border: "2px solid hotpink",
   },
   bottomSection: {
     width: "100%",
-    height: "70%",
+    height: "50%",
     display: "flex",
   },
   dataInput: {
@@ -71,7 +71,7 @@ export default function EditDashboard() {
     <div className={classes.root}>
       <div className={classes.topSection}>
         <div className={classes.saved}>
-          Dashboard showing saved charts
+          {/* Dashboard showing saved charts */}
           <DashboardEditor charts={dashboardCharts} />
         </div>
         <div className={classes.select}>

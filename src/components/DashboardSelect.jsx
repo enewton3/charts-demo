@@ -4,7 +4,7 @@ import React from "react";
 const useStyles = makeStyles((theme) => ({
   menu: {
     boxShadow: "0 0 5px grey",
-    width: "60%",
+    width: "100%",
   },
 }));
 
