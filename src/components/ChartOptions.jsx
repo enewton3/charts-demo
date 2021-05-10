@@ -1,5 +1,7 @@
 import {
+  Checkbox,
   FormControl,
+  FormControlLabel,
   InputLabel,
   makeStyles,
   MenuItem,
@@ -15,26 +17,38 @@ const useStyles = makeStyles(() => ({
 }));
 
 const typeOptions = [
+  "Annotation Chart",
   "Area Chart",
   "Bar Chart",
   "Bubble Chart",
   "Calendar",
   "Candlestick Chart",
+  "Column Chart",
   "Combo Chart",
+  "Diff Chart",
+  "Donut Chart",
   "Gantt",
+  "Gauge",
   "Geo Chart",
   "Histogram",
   "Line Chart",
+  "Line",
+  "Bar",
+  "Map",
+  "Org Chart",
   "Pie Chart",
+  "Sankey",
   "Scatter Chart",
-  "Stepped Area Chart",
+  "SteppedArea Chart",
   "Table",
   "Timeline",
   "TreeMap",
+  "Waterfall Chart",
   "Word Tree",
 ];
 
-export default function ChartOptions({ options, setOptions, type, setType }) {
+export default function ChartOptions(props) {
+  const { options, setOptions, type, setType } = props;
   const classes = useStyles();
 
   const handleChange = (e) => {
@@ -56,6 +70,19 @@ export default function ChartOptions({ options, setOptions, type, setType }) {
     });
   };
 
+  const handleLegendCheck = () => {
+    setOptions((prev) => {
+      const prevLegend = prev.legend;
+
+      const newLegend = prevLegend === "none" ? "" : "none";
+
+      return {
+        ...prev,
+        legend: newLegend,
+      };
+    });
+  };
+
   const handleTypeChange = (e) => {
     const { value } = e.target;
     setType(value);
@@ -73,6 +100,17 @@ export default function ChartOptions({ options, setOptions, type, setType }) {
           ))}
         </Select>
       </FormControl>
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={options.legend === "none" ? false : true}
+            // value={options.legend}
+            onChange={handleLegendCheck}
+            name="legend"
+          />
+        }
+        label="Legend?"
+      />
 
       <FormControl className={classes.formControl}>
         <TextField
