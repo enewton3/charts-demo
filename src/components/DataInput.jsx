@@ -3,7 +3,7 @@ import React from "react";
 
 export default function DataInput({ data, setData }) {
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     // setData((prev) => ({
     //   ...prev,
     //   [name]: value,

@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 export default function EditDashboard(props) {
   const {
     dashboards,
-    setDashboards,
+    // setDashboards, use this later for creating new dasboards, and for managing adding new charts to dashboards state
     currentDashboard,
     handleDashboardSelect,
   } = props;

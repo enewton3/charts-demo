@@ -34,6 +34,7 @@ export default function ViewDashboardGrid({ currentDashboard }) {
 
   const handleResize = () => {
     setResizeToggle((prev) => !prev);
+    console.log(resizeToggle);
   };
 
   const renderedComponents = currentDashboard.name ? (
