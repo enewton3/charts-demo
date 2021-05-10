@@ -1,37 +1,42 @@
 import React from "react";
-import RGL, { WidthProvider } from "react-grid-layout";
-import "../styles/react-grid-styles.css";
-import "../styles/react-resizable-styles.css";
-import data from "../data/SampleDashboard.json";
+import { makeStyles } from "@material-ui/core";
+import DashboardSelect from "../components/DashboardSelect";
+import ViewDashboardGrid from "../components/ViewDashboardGrid";
 
-const GridLayout = WidthProvider(RGL);
+const useStyles = makeStyles((theme) => ({
+  viewContainer: {
+    position: "fixed",
+    left: "10vw",
+    display: "flex",
+    flexFlow: "column wrap",
+    width: "90vw",
+    height: "100vh",
+  },
+  select: {
+    width: "25%",
+  },
+}));
 
-export default function ViewDashboard({ charts }) {
-  console.log(data);
+export default function ViewDashboard({
+  dashboards,
+  currentDashboard,
+  handleDashboardSelect,
+}) {
+  const classes = useStyles();
 
   return (
-    <GridLayout>
-      {charts.map((chart, index) => {
-        return (
-          <div
-            style={{
-              border: "1px solid black",
-              backgroundColor: "white",
-            }}
-            key={`${chart.options.title} ${index}`}
-          >
-            <Chart
-              width={chart.options.width}
-              height={chart.options.height}
-              chartType={chart.type || "BarChart"}
-              loader={<div>Loading Chart</div>}
-              data={chart.data}
-              options={chart.options}
-              legendToggle={false}
-            />
-          </div>
-        );
-      })}
-    </GridLayout>
+    <div className={classes.viewContainer}>
+      <div className={classes.select}>
+        <DashboardSelect
+          dashboards={dashboards}
+          handleDashboardSelect={handleDashboardSelect}
+          currentDashboard={currentDashboard}
+        />
+      </div>
+
+      <div>
+        <ViewDashboardGrid currentDashboard={currentDashboard} />
+      </div>
+    </div>
   );
 }

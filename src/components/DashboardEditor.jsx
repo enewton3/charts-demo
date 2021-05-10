@@ -14,7 +14,6 @@ export default function DashboardEditor(props) {
   //Generate Layout array for Grid layout from Charts array based on either previously saved layout, or default values
   const generateLayout = () => {
     const layout = charts.map((item, i) => {
-      console.log(item);
       return {
         x: item.x || i * 2,
         y: item.y || i * 2,
@@ -37,6 +36,7 @@ export default function DashboardEditor(props) {
 
   const handleResize = () => {
     setResizeToggle((prev) => !prev);
+    console.log(resizeToggle);
   };
 
   return (
