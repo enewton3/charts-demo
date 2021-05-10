@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ChartOptions from "./ChartOptions";
 import ChartPreview from "./ChartPreview";
 
+//MUI Styles
 const useStyles = makeStyles((theme) => ({
   button: {
     backgroundColor: theme.palette.primary.main,
@@ -13,7 +14,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ChartEdit(props) {
   const { type, setType, data, addChart } = props;
+
+  //MUI Styles
   const classes = useStyles();
+
+  //Chart Options object - passed down and reset in Options component, used to render chart in ChartPreview
   const [options, setOptions] = useState({
     title: "",
     chartArea: {},
@@ -26,7 +31,9 @@ export default function ChartEdit(props) {
     },
     height: "100%",
     width: "100%",
+    legend: "",
   });
+
   return (
     <>
       <Button

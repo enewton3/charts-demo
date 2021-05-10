@@ -11,19 +11,18 @@ export default function DashboardEditor(props) {
   const [layout, setLayout] = useState([]);
   const [resizeToggle, setResizeToggle] = useState(false);
 
-  console.log(charts);
-
+  //Generate Layout array for Grid layout from Charts array based on either previously saved layout, or default values
   const generateLayout = () => {
     const layout = charts.map((item, i) => {
       console.log(item);
       return {
         x: item.x || i * 2,
         y: item.y || i * 2,
-        w: item.w || 2,
-        h: item.h || 2,
+        w: item.w || 3,
+        h: item.h || 3,
         i: item.options.title,
-        minW: 2,
-        minH: 2,
+        minW: 3,
+        minH: 3,
         maxH: 5,
         maxW: 5,
         isBounded: true,
@@ -32,6 +31,7 @@ export default function DashboardEditor(props) {
     return layout;
   };
 
+  //Generate Layout on rerender
   useEffect(() => {
     setLayout(generateLayout());
   }, [charts]);
@@ -40,27 +40,7 @@ export default function DashboardEditor(props) {
     setResizeToggle((prev) => !prev);
   };
 
-  // const layout = [
-  //   { i: "a", x: 0, y: 0, w: 1, h: 2, static: true },
-  //   { i: "b", x: 1, y: 0, w: 3, h: 2, minW: 2, maxW: 4 },
-  //   { i: "c", x: 4, y: 0, w: 1, h: 2 },
-  // ];
-  // return (
-  //   <GridLayout
-  //     className="layout"
-  //     layout={layout}
-  //     cols={12}
-  //     rowHeight={30}
-  //     width={1200}
-  //   >
-  //     <div key="a">a</div>
-  //     <div key="b">b</div>
-  //     <div key="c">c</div>
-  //   </GridLayout>
-  // );
-
   return (
-    // <div>
     <ReactGridLayout
       style={{
         minHeight: "100%",
@@ -69,7 +49,7 @@ export default function DashboardEditor(props) {
         maxWidth: "100%",
       }}
       layout={layout}
-      // compactType={"horizontal"}
+      compactType={"vertical"}
       // autoSize={false}
       preventCollision
       rowHeight={50}
@@ -80,13 +60,11 @@ export default function DashboardEditor(props) {
       onResizeStop={handleResize}
     >
       {charts.map((chart, index) => {
-        console.log(chart);
         return (
           <div
             style={{
               border: "1px solid black",
               backgroundColor: "white",
-              // maxHeight: "400px",
             }}
             key={`${chart.options.title} ${index}`}
           >
@@ -103,6 +81,5 @@ export default function DashboardEditor(props) {
         );
       })}
     </ReactGridLayout>
-    // </div>
   );
 }

@@ -1,8 +1,10 @@
 import { Typography } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import Chart from "react-google-charts";
 
-export default function ChartPreview({ options, type, data }) {
+export default function ChartPreview({ options, type, data, renderToggle }) {
+  useEffect(() => {}, [renderToggle]);
+
   return (
     <div style={{ paddingTop: "3vh" }}>
       <Typography>Chart Preview</Typography>

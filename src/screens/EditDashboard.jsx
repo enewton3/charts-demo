@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   topSection: {
     display: "flex",
-    height: "50%",
+    height: "30%",
   },
   saved: {
     border: "2px solid black",
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
   bottomSection: {
     width: "100%",
-    height: "50%",
+    height: "70%",
     display: "flex",
   },
   dataInput: {
