@@ -25,7 +25,6 @@ export default function DashboardEditor(props) {
         minH: 3,
         maxH: 5,
         maxW: 5,
-        isBounded: true,
       };
     });
     return layout;

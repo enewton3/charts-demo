@@ -1,0 +1,86 @@
+[
+  {
+  "name" : "CEO DASHBOARD",
+  "tiles": [
+  {"title": "tile1",
+    "x": 0,
+    "y": 0,
+    "w": 0,   
+    "h": 0,   
+    "i": 0,
+    "minW": 3,
+    "minH": 3,
+    "maxH": 5,
+    "maxW": 5,
+    "data": [],
+    "options":{
+      "title": "",
+      "chartArea": {},
+      "hAxis": {
+        "title": "",
+        "minValue": 0
+      },
+      "vAxis": {
+        "title": ""
+      },
+      "height": "100%",
+      "width": "100%",
+      "legend": ""
+    },
+    "type":""
+  },
+  {
+    "title": "tile2",
+    "x": 0,
+    "y": 0,
+    "w": 0,  
+    "h": 0,   
+    "i": 0,
+    "minW": 3,
+    "minH": 3,
+    "maxH": 5,
+    "maxW": 5,
+    "data": [],
+    "options":{"title": "",
+      "chartArea": {},
+      "hAxis": {
+        "title": "",
+        "minValue": 0
+      },
+      "vAxis": {
+        "title": ""
+      },
+      "height": "100%",
+      "width": "100%",
+      "legend": ""},
+    "type":""
+  },
+  {"title": "tile3",
+    "x": 0,
+    "y": 0,
+    "w": 0,   
+    "h": 0,   
+    "i": 0,
+    "minW": 3,
+    "minH": 3,
+    "maxH": 5,
+    "maxW": 5,
+    "data": [],
+    "options":{"title": "",
+      "chartArea": {},
+      "hAxis": {
+        "title": "",
+        "minValue": 0
+      },
+      "vAxis": {
+        "title": ""
+      },
+      "height": "100%",
+      "width": "100%",
+      "legend": ""},
+    "type":""
+  }
+]},
+{"name":"Not ceo dashboard"}
+
+]
