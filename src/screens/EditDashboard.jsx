@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ChartEdit from "../components/ChartEdit";
 import DashboardEditor from "../components/DashboardEditor";
 import DashboardSelect from "../components/DashboardSelect";
@@ -41,7 +41,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EditDashboard() {
+export default function EditDashboard(props) {
+  const {
+    dashboards,
+    setDashboards,
+    currentDashboard,
+    handleDashboardSelect,
+  } = props;
   const classes = useStyles();
   const [data, setData] = useState([
     ["City", "2010 Population", "2000 Population"],
@@ -53,15 +59,14 @@ export default function EditDashboard() {
   ]);
 
   const [type, setType] = useState("");
-  const [dashboards, setDashboards] = useState([
-    "CEO Dashboard",
-    "Regional Sales Dashboard",
-    "MV System Dashboard",
-    "My Personal Dashboard",
-    "Audit Dashboard",
-  ]);
 
   const [dashboardCharts, setDashboardCharts] = useState([]);
+
+  useEffect(() => {
+    if (currentDashboard.tiles) {
+      setDashboardCharts(currentDashboard.tiles);
+    }
+  }, [currentDashboard]);
 
   const addChart = (newChart) => {
     setDashboardCharts((prev) => [...prev, newChart]);
@@ -71,11 +76,15 @@ export default function EditDashboard() {
     <div className={classes.root}>
       <div className={classes.topSection}>
         <div className={classes.saved}>
-          {/* Dashboard showing saved charts */}
+          {currentDashboard ? <div>***{currentDashboard.name}***</div> : null}
           <DashboardEditor charts={dashboardCharts} />
         </div>
         <div className={classes.select}>
-          <DashboardSelect dashboards={dashboards} />
+          <DashboardSelect
+            dashboards={dashboards}
+            handleDashboardSelect={handleDashboardSelect}
+            currentDashboard={currentDashboard}
+          />
         </div>
       </div>
       <div className={classes.bottomSection}>

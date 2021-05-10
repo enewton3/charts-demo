@@ -8,13 +8,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DashboardSelect({ dashboards }) {
+export default function DashboardSelect(props) {
   const classes = useStyles();
+  const { dashboards, handleDashboardSelect, currentDashboard } = props;
   return (
     <MenuList className={classes.menu}>
-      {dashboards.map((item) => (
-        <MenuItem key={item}>{item}</MenuItem>
-      ))}
+      {dashboards.map((item) => {
+        const isSelected = item.name === currentDashboard?.name ? true : false;
+        return (
+          <MenuItem
+            key={item.name}
+            value={item.name}
+            onClick={(e) => handleDashboardSelect(item.name)}
+            selected={isSelected}
+          >
+            {item.name}
+          </MenuItem>
+        );
+      })}
     </MenuList>
   );
 }

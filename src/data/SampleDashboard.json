@@ -1,47 +1,59 @@
+
 [
-  {
+{
   "name" : "CEO DASHBOARD",
   "tiles": [
-  {"title": "tile1",
-    "x": 0,
-    "y": 0,
-    "w": 0,   
-    "h": 0,   
-    "i": 0,
+    {
+    "title": "tile1",
+    "x": 3,
+    "y": 4,
+    "w": 2,   
+    "h": 2,   
+    "i": "tile1", 
     "minW": 3,
     "minH": 3,
     "maxH": 5,
     "maxW": 5,
-    "data": [],
+    "data": [["City", "2010 Population", "2000 Population"],
+    ["New York City, NY", 8175000, 8008000],
+    ["Los Angeles, CA", 3792000, 3694000],
+    ["Chicago, IL", 2695000, 2896000],
+    ["Houston, TX", 2099000, 1953000],
+    ["Philadelphia, PA", 1526000, 1517000]],
     "options":{
-      "title": "",
+      "title": "tile1",
       "chartArea": {},
       "hAxis": {
-        "title": "",
+        "title": "title tile 1",
         "minValue": 0
       },
       "vAxis": {
-        "title": ""
+        "title": "chart title"
       },
       "height": "100%",
       "width": "100%",
       "legend": ""
     },
-    "type":""
+    "type":"BarChart"
   },
   {
     "title": "tile2",
-    "x": 0,
-    "y": 0,
-    "w": 0,  
-    "h": 0,   
-    "i": 0,
+    "x": 1,
+    "y": 1,
+    "w": 2,  
+    "h": 2,   
+    "i": "tile2",
     "minW": 3,
     "minH": 3,
     "maxH": 5,
     "maxW": 5,
-    "data": [],
-    "options":{"title": "",
+    "data": [["City", "2010 Population", "2000 Population"],
+    ["New York City, NY", 8175000, 8008000],
+    ["Los Angeles, CA", 3792000, 3694000],
+    ["Chicago, IL", 2695000, 2896000],
+    ["Houston, TX", 2099000, 1953000],
+    ["Philadelphia, PA", 1526000, 1517000]],
+    "options":{"title": "tile2",
       "chartArea": {},
       "hAxis": {
         "title": "",
@@ -53,20 +65,26 @@
       "height": "100%",
       "width": "100%",
       "legend": ""},
-    "type":""
+    "type":"BarChart"
   },
-  {"title": "tile3",
-    "x": 0,
-    "y": 0,
-    "w": 0,   
-    "h": 0,   
-    "i": 0,
+  {
+    "title": "tile3",
+    "x": 3,
+    "y": 2,
+    "w": 2,   
+    "h": 2,   
+    "i": "tile3",
     "minW": 3,
     "minH": 3,
     "maxH": 5,
     "maxW": 5,
-    "data": [],
-    "options":{"title": "",
+    "data": [["City", "2010 Population", "2000 Population"],
+    ["New York City, NY", 8175000, 8008000],
+    ["Los Angeles, CA", 3792000, 3694000],
+    ["Chicago, IL", 2695000, 2896000],
+    ["Houston, TX", 2099000, 1953000],
+    ["Philadelphia, PA", 1526000, 1517000]],
+    "options":{"title": "tile3",
       "chartArea": {},
       "hAxis": {
         "title": "",
@@ -77,10 +95,342 @@
       },
       "height": "100%",
       "width": "100%",
-      "legend": ""},
-    "type":""
+      "legend": "none"},
+    "type":"BarChart"
   }
 ]},
-{"name":"Not ceo dashboard"}
-
+{
+  "name" : "Regional Sales Dashboard",
+  "tiles": [
+  {
+  "title": "tile1",
+  "x": 0,
+  "y": 0,
+  "w": 0,   
+  "h": 0,   
+  "i": "", 
+  "minW": 3,
+  "minH": 3,
+  "maxH": 5,
+  "maxW": 5,
+  "data": [],
+  "options":{
+    "title": "",
+    "chartArea": {},
+    "hAxis": {
+      "title": "",
+      "minValue": 0
+    },
+    "vAxis": {
+      "title": ""
+    },
+    "height": "100%",
+    "width": "100%",
+    "legend": ""
+  },
+  "type":""
+},
+{
+  "title": "tile2",
+  "x": 0,
+  "y": 0,
+  "w": 0,  
+  "h": 0,   
+  "i": 0,
+  "minW": 3,
+  "minH": 3,
+  "maxH": 5,
+  "maxW": 5,
+  "data": [],
+  "options":{"title": "",
+    "chartArea": {},
+    "hAxis": {
+      "title": "",
+      "minValue": 0
+    },
+    "vAxis": {
+      "title": ""
+    },
+    "height": "100%",
+    "width": "100%",
+    "legend": ""},
+  "type":""
+},
+{
+  "title": "tile3",
+  "x": 0,
+  "y": 0,
+  "w": 0,   
+  "h": 0,   
+  "i": 0,
+  "minW": 3,
+  "minH": 3,
+  "maxH": 5,
+  "maxW": 5,
+  "data": [],
+  "options":{"title": "",
+    "chartArea": {},
+    "hAxis": {
+      "title": "",
+      "minValue": 0
+    },
+    "vAxis": {
+      "title": ""
+    },
+    "height": "100%",
+    "width": "100%",
+    "legend": ""},
+  "type":""
+}
+]},
+{
+  "name" : "MV System Dashboard",
+  "tiles": [
+  {
+  "title": "tile1",
+  "x": 0,
+  "y": 0,
+  "w": 0,   
+  "h": 0,   
+  "i": "", 
+  "minW": 3,
+  "minH": 3,
+  "maxH": 5,
+  "maxW": 5,
+  "data": [],
+  "options":{
+    "title": "",
+    "chartArea": {},
+    "hAxis": {
+      "title": "",
+      "minValue": 0
+    },
+    "vAxis": {
+      "title": ""
+    },
+    "height": "100%",
+    "width": "100%",
+    "legend": ""
+  },
+  "type":""
+},
+{
+  "title": "tile2",
+  "x": 0,
+  "y": 0,
+  "w": 0,  
+  "h": 0,   
+  "i": 0,
+  "minW": 3,
+  "minH": 3,
+  "maxH": 5,
+  "maxW": 5,
+  "data": [],
+  "options":{"title": "",
+    "chartArea": {},
+    "hAxis": {
+      "title": "",
+      "minValue": 0
+    },
+    "vAxis": {
+      "title": ""
+    },
+    "height": "100%",
+    "width": "100%",
+    "legend": ""},
+  "type":""
+},
+{
+  "title": "tile3",
+  "x": 0,
+  "y": 0,
+  "w": 0,   
+  "h": 0,   
+  "i": 0,
+  "minW": 3,
+  "minH": 3,
+  "maxH": 5,
+  "maxW": 5,
+  "data": [],
+  "options":{"title": "",
+    "chartArea": {},
+    "hAxis": {
+      "title": "",
+      "minValue": 0
+    },
+    "vAxis": {
+      "title": ""
+    },
+    "height": "100%",
+    "width": "100%",
+    "legend": ""},
+  "type":""
+}
+]},
+{
+  "name" : "My Personal Dashboard",
+  "tiles": [
+  {
+  "title": "tile1",
+  "x": 0,
+  "y": 0,
+  "w": 0,   
+  "h": 0,   
+  "i": "", 
+  "minW": 3,
+  "minH": 3,
+  "maxH": 5,
+  "maxW": 5,
+  "data": [],
+  "options":{
+    "title": "",
+    "chartArea": {},
+    "hAxis": {
+      "title": "",
+      "minValue": 0
+    },
+    "vAxis": {
+      "title": ""
+    },
+    "height": "100%",
+    "width": "100%",
+    "legend": ""
+  },
+  "type":""
+},
+{
+  "title": "tile2",
+  "x": 0,
+  "y": 0,
+  "w": 0,  
+  "h": 0,   
+  "i": 0,
+  "minW": 3,
+  "minH": 3,
+  "maxH": 5,
+  "maxW": 5,
+  "data": [],
+  "options":{"title": "",
+    "chartArea": {},
+    "hAxis": {
+      "title": "",
+      "minValue": 0
+    },
+    "vAxis": {
+      "title": ""
+    },
+    "height": "100%",
+    "width": "100%",
+    "legend": ""},
+  "type":""
+},
+{"title": "tile3",
+  "x": 0,
+  "y": 0,
+  "w": 0,   
+  "h": 0,   
+  "i": 0,
+  "minW": 3,
+  "minH": 3,
+  "maxH": 5,
+  "maxW": 5,
+  "data": [],
+  "options":{"title": "",
+    "chartArea": {},
+    "hAxis": {
+      "title": "",
+      "minValue": 0
+    },
+    "vAxis": {
+      "title": ""
+    },
+    "height": "100%",
+    "width": "100%",
+    "legend": ""},
+  "type":""
+}
+]},
+{
+  "name" : "Audit Dashboard",
+  "tiles": [
+  {
+  "title": "tile1",
+  "x": 0,
+  "y": 0,
+  "w": 0,   
+  "h": 0,   
+  "i": "", 
+  "minW": 3,
+  "minH": 3,
+  "maxH": 5,
+  "maxW": 5,
+  "data": [],
+  "options":{
+    "title": "",
+    "chartArea": {},
+    "hAxis": {
+      "title": "",
+      "minValue": 0
+    },
+    "vAxis": {
+      "title": ""
+    },
+    "height": "100%",
+    "width": "100%",
+    "legend": ""
+  },
+  "type":""
+},
+{
+  "title": "tile2",
+  "x": 0,
+  "y": 0,
+  "w": 0,  
+  "h": 0,   
+  "i": 0,
+  "minW": 3,
+  "minH": 3,
+  "maxH": 5,
+  "maxW": 5,
+  "data": [],
+  "options":{"title": "",
+    "chartArea": {},
+    "hAxis": {
+      "title": "",
+      "minValue": 0
+    },
+    "vAxis": {
+      "title": ""
+    },
+    "height": "100%",
+    "width": "100%",
+    "legend": ""},
+  "type":""
+},
+{"title": "tile3",
+  "x": 0,
+  "y": 0,
+  "w": 0,   
+  "h": 0,   
+  "i": 0,
+  "minW": 3,
+  "minH": 3,
+  "maxH": 5,
+  "maxW": 5,
+  "data": [],
+  "options":{"title": "",
+    "chartArea": {},
+    "hAxis": {
+      "title": "",
+      "minValue": 0
+    },
+    "vAxis": {
+      "title": ""
+    },
+    "height": "100%",
+    "width": "100%",
+    "legend": ""},
+  "type":""
+}
+]}
 ]
