@@ -7,8 +7,8 @@ export default function ChartPreview({ options, type, data }) {
     <div style={{ paddingTop: "3vh" }}>
       <Typography>Chart Preview</Typography>
       <Chart
-        width={400}
-        height={300}
+        width={options.width}
+        height={options.height}
         chartType={type || "BarChart"}
         loader={<div>Loading Chart</div>}
         data={data}

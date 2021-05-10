@@ -24,6 +24,8 @@ export default function ChartEdit(props) {
     vAxis: {
       title: "",
     },
+    height: 400,
+    width: 300,
   });
   return (
     <>
