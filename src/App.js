@@ -1,5 +1,4 @@
 import "./App.css";
-import Chart from "react-google-charts";
 import EditDashboard from "./screens/EditDashboard";
 import ViewDashboard from "./screens/ViewDashboard";
 import Layout from "./components/Layout";

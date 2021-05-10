@@ -67,7 +67,9 @@ export default function ChartOptions({ options, setOptions, type, setType }) {
         <InputLabel id="type-label">Type Select</InputLabel>
         <Select labelId="type-label" value={type} onChange={handleTypeChange}>
           {typeOptions.map((item) => (
-            <MenuItem value={item.split(" ").join("")}>{item}</MenuItem>
+            <MenuItem value={item.split(" ").join("")} key={`${item} select`}>
+              {item}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>

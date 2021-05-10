@@ -1,6 +1,5 @@
 import { Typography } from "@material-ui/core";
 import React from "react";
-import Draggable from "react-draggable";
 import Chart from "react-google-charts";
 
 export default function ChartPreview({ options, type, data }) {

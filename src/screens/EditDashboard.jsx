@@ -1,8 +1,7 @@
-import { Button, makeStyles, Select } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import React, { useState } from "react";
-import Draggable from "react-draggable";
-import ChartOptions from "../components/ChartOptions";
-import ChartPreview from "../components/ChartPreview";
+import ChartEdit from "../components/ChartEdit";
+import DashboardEditor from "../components/DashboardEditor";
 import DashboardSelect from "../components/DashboardSelect";
 import DataInput from "../components/DataInput";
 
@@ -40,11 +39,6 @@ const useStyles = makeStyles((theme) => ({
     width: "40%",
     border: "2px solid yellow",
   },
-  button: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText,
-    "&:hover": { backgroundColor: theme.palette.primary.dark },
-  },
 }));
 
 export default function EditDashboard() {
@@ -57,17 +51,7 @@ export default function EditDashboard() {
     ["Houston, TX", 2099000, 1953000],
     ["Philadelphia, PA", 1526000, 1517000],
   ]);
-  const [options, setOptions] = useState({
-    title: "",
-    chartArea: {},
-    hAxis: {
-      title: "",
-      minValue: 0,
-    },
-    vAxis: {
-      title: "",
-    },
-  });
+
   const [type, setType] = useState("");
   const [dashboards, setDashboards] = useState([
     "CEO Dashboard",
@@ -77,10 +61,19 @@ export default function EditDashboard() {
     "Audit Dashboard",
   ]);
 
+  const [dashboardCharts, setDashboardCharts] = useState([]);
+
+  const addChart = (newChart) => {
+    setDashboardCharts((prev) => [...prev, newChart]);
+  };
+
   return (
     <div className={classes.root}>
       <div className={classes.topSection}>
-        <div className={classes.saved}>Dashboard showing saved charts</div>
+        <div className={classes.saved}>
+          Dashboard showing saved charts
+          <DashboardEditor charts={dashboardCharts} />
+        </div>
         <div className={classes.select}>
           <DashboardSelect dashboards={dashboards} />
         </div>
@@ -90,15 +83,12 @@ export default function EditDashboard() {
           <DataInput data={data} setData={setData} type={type} />
         </div>
         <div className={classes.options}>
-          <Button className={classes.button}>Add</Button>
-          <ChartOptions
-            options={options}
-            setOptions={setOptions}
+          <ChartEdit
             type={type}
             setType={setType}
+            data={data}
+            addChart={addChart}
           />
-
-          <ChartPreview data={data} options={options} type={type} />
         </div>
       </div>
     </div>
