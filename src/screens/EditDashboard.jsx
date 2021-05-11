@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   topSection: {
     display: "flex",
-    height: "50%",
+    height: "30%",
   },
   saved: {
     border: "2px solid black",
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   bottomSection: {
     width: "100%",
-    height: "50%",
+    height: "70%",
     display: "flex",
   },
   dataInput: {
@@ -73,6 +73,8 @@ export default function EditDashboard(props) {
     setDashboardCharts((prev) => [...prev, newChart]);
   };
 
+  const fetchData = (cmd, type) => {};
+
   return (
     <div className={classes.root}>
       <div className={classes.topSection}>
@@ -92,7 +94,12 @@ export default function EditDashboard(props) {
       </div>
       <div className={classes.bottomSection}>
         <div className={classes.dataInput}>
-          {/* <DataInput data={data} setData={setData} type={type} /> */}
+          <DataInput
+            data={data}
+            setData={setData}
+            type={type}
+            fetchData={fetchData}
+          />
           {/* <Editor /> */}
         </div>
         <div className={classes.options}>

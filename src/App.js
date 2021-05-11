@@ -19,6 +19,11 @@ function App() {
     setDashboards(dashboardsData);
   }, []);
 
+  //API Call to get list of dashboards and their associated tiles/charts
+  const fetchDashboards = () => {
+    // const resp = getDashboards()
+  };
+
   return (
     <div className="App">
       <Layout>

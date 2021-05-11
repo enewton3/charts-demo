@@ -3,6 +3,7 @@ import RGL, { WidthProvider } from "react-grid-layout";
 import "../styles/react-grid-styles.css";
 import "../styles/react-resizable-styles.css";
 import Chart from "react-google-charts";
+import ChartWrapper from "./ChartWrapper";
 
 const GridLayout = WidthProvider(RGL);
 
@@ -22,6 +23,7 @@ export default function ViewDashboardGrid({ currentDashboard }) {
         minH: 3,
         maxH: 5,
         maxW: 5,
+        static: true,
       };
     });
     return layout;
@@ -59,6 +61,7 @@ export default function ViewDashboardGrid({ currentDashboard }) {
         onResizeStop={handleResize}
       >
         {currentDashboard.tiles?.map((chart, index) => {
+          console.log(chart);
           return (
             <div
               x={chart.x}
@@ -71,7 +74,12 @@ export default function ViewDashboardGrid({ currentDashboard }) {
               }}
               key={`${chart.options.title} ${index}`}
             >
-              <Chart
+              <ChartWrapper
+                chartQuery={chart.data}
+                options={chart.options}
+                chartType={chart.type}
+              />
+              {/* <Chart
                 width={chart.options.width}
                 height={chart.options.height}
                 chartType={chart.type || "BarChart"}
@@ -79,7 +87,7 @@ export default function ViewDashboardGrid({ currentDashboard }) {
                 data={chart.data}
                 options={chart.options}
                 legendToggle={false}
-              />
+              /> */}
             </div>
           );
         })}
