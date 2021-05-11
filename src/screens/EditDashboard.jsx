@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
   select: {
     width: "30%",
     border: "2px solid hotpink",
+    display: "flex",
+    flexFlow: "column wrap",
+    justifyContent: "space-between",
   },
   bottomSection: {
     width: "100%",
@@ -41,8 +44,9 @@ const useStyles = makeStyles((theme) => ({
 export default function EditDashboard(props) {
   const {
     dashboards,
-    // setDashboards, use this later for creating new dasboards, and for managing adding new charts to dashboards state
+    setDashboards,
     currentDashboard,
+    setCurrentDashboard,
     handleDashboardSelect,
   } = props;
   const classes = useStyles();
@@ -61,6 +65,22 @@ export default function EditDashboard(props) {
 
   const addChart = (newChart) => {
     setDashboardCharts((prev) => [...prev, newChart]);
+    setCurrentDashboard((prev) => ({
+      ...prev,
+      tiles: [...prev.tiles, newChart],
+    }));
+  };
+
+  const saveDashboard = (current, updated) => {
+    //replace the currentDashboard with the updated currentDashboard in the dashboards Array
+    const currentDashIndex = dashboards.findIndex(
+      (el) => el.name === currentDashboard.name
+    );
+    const newDashboards = [...dashboards];
+    newDashboards.splice(currentDashIndex, 1, currentDashboard);
+    setDashboards(newDashboards);
+
+    //put/patch request to api to update currentDashboard entry
   };
 
   return (
@@ -73,9 +93,13 @@ export default function EditDashboard(props) {
             ) : (
               <div></div>
             )}
-            <Button>Save</Button>
+            <Button onClick={() => saveDashboard()}>Save</Button>
           </div>
-          <DashboardEditor charts={dashboardCharts} />
+          <DashboardEditor
+            charts={dashboardCharts}
+            setCharts={setDashboardCharts}
+            setCurrentDashboard={setCurrentDashboard}
+          />
         </div>
         <div className={classes.select}>
           <DashboardSelect
@@ -83,6 +107,7 @@ export default function EditDashboard(props) {
             handleDashboardSelect={handleDashboardSelect}
             currentDashboard={currentDashboard}
           />
+          <Button>Create New Dashboard</Button>
         </div>
       </div>
       <div className={classes.bottomSection}>

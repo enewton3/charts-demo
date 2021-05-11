@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Chart from "react-google-charts";
+import React, { useState } from "react";
 import RGL, { WidthProvider } from "react-grid-layout";
 import "../styles/react-grid-styles.css";
 import "../styles/react-resizable-styles.css";
@@ -8,31 +7,34 @@ import ChartWrapper from "./ChartWrapper";
 const ReactGridLayout = WidthProvider(RGL);
 
 export default function DashboardEditor(props) {
-  const { charts } = props;
-  const [layout, setLayout] = useState([]);
-  const [resizeToggle, setResizeToggle] = useState(false);
-  const [newDataGrid, setNewDataGrid] = useState({
-    x: 0,
-    y: 0,
-    h: 0,
-    w: 0,
-  });
+  const { charts, setCharts } = props;
+  const [toggle, setToggle] = useState(false);
 
-  const handleResize = () => {
-    setResizeToggle((prev) => !prev);
-    console.log(resizeToggle);
+  const handleChange = (oldItem, newItem) => {
+    //Toggle state change for resize rerender
+    setToggle((prev) => !prev);
+    //This is logging so I don't get errors from react and can deploy eventually...
+    console.log(toggle);
+
+    const chartI = oldItem.i.split(" ")[0];
+
+    //get the chart to update from charts state using the value in i in either item.
+    //this has an index associated with it, so split it and grab the first value. There's probably a better way to do this.
+    const updateChart = charts.filter((item) => item.datagrid.i === chartI)[0];
+
+    //grab the newItems position and size and set that in the updateChart
+    const { x, y, h, w } = newItem;
+    updateChart.datagrid.x = x;
+    updateChart.datagrid.y = y;
+    updateChart.datagrid.h = h;
+    updateChart.datagrid.w = w;
+
+    //save that updated chart into the charts state using the index of the updateChart in charts and a shallow copy
+    const updateChartIndex = charts.findIndex((el) => el.datagrid.i === chartI);
+    const newCharts = [...charts];
+    newCharts.splice(updateChartIndex, 1, updateChart);
+    setCharts(newCharts);
   };
-
-  const getLayout = () => {
-    const layoutArray = charts.map((chart) => chart.datagrid);
-    console.log(layoutArray);
-  };
-
-  useEffect(() => {
-    if (charts.length) {
-      getLayout();
-    }
-  }, [charts]);
 
   return (
     <ReactGridLayout
@@ -42,16 +44,26 @@ export default function DashboardEditor(props) {
         minWidth: "100%",
         maxWidth: "100%",
       }}
-      layout={layout}
+      // layout={layout}
       compactType={"vertical"}
-      // autoSize={false}
       preventCollision
       rowHeight={50}
       cols={10}
       rows={10}
-      // items={charts.length}
+      maxRows={10}
       isBounded
-      onResizeStop={handleResize}
+      onResizeStop={(layout, oldItem, newItem, placeholder, e, element) => {
+        // console.log("layout", layout);
+        // console.log("oldItem", oldItem);
+        // console.log("newItem", newItem);
+        // console.log("placeholder", placeholder);
+        // console.log("e", e);
+        // console.log("element", element);
+        handleChange(oldItem, newItem);
+      }}
+      onDragStop={(layout, oldItem, newItem, placeholder, e, element) => {
+        handleChange(oldItem, newItem);
+      }}
     >
       {charts.map((chart, index) => {
         // console.log(chart);
@@ -61,7 +73,7 @@ export default function DashboardEditor(props) {
               border: "1px solid black",
               backgroundColor: "white",
             }}
-            key={`${chart.options.title} ${index}`}
+            key={`${chart.datagrid.i} ${index}`}
             data-grid={{ ...chart.datagrid }}
           >
             <ChartWrapper

@@ -34,6 +34,7 @@ function App() {
               setDashboards={setDashboards}
               handleDashboardSelect={handleDashboardSelect}
               currentDashboard={currentDashboard}
+              setCurrentDashboard={setCurrentDashboard}
             />
           </Route>
           <Route path="/view">
