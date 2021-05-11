@@ -9,43 +9,13 @@ import {
   TextField,
 } from "@material-ui/core";
 import React from "react";
+import { ChartTypeOptions } from "../data/ChartTypeOptions";
 
 const useStyles = makeStyles(() => ({
   formControl: {
-    width: "90%",
+    // width: "90%",
   },
 }));
-
-const typeOptions = [
-  "Annotation Chart",
-  "Area Chart",
-  "Bar Chart",
-  "Bubble Chart",
-  "Calendar",
-  "Candlestick Chart",
-  "Column Chart",
-  "Combo Chart",
-  "Diff Chart",
-  "Donut Chart",
-  "Gantt",
-  "Gauge",
-  "Geo Chart",
-  "Histogram",
-  "Line Chart",
-  "Line",
-  "Bar",
-  "Map",
-  "Org Chart",
-  "Pie Chart",
-  "Sankey",
-  "Scatter Chart",
-  "SteppedArea Chart",
-  "Table",
-  "Timeline",
-  "TreeMap",
-  "Waterfall Chart",
-  "Word Tree",
-];
 
 export default function ChartOptions(props) {
   const { options, setOptions, type, setType } = props;
@@ -93,7 +63,7 @@ export default function ChartOptions(props) {
       <FormControl className={classes.formControl}>
         <InputLabel id="type-label">Type Select</InputLabel>
         <Select labelId="type-label" value={type} onChange={handleTypeChange}>
-          {typeOptions.map((item) => (
+          {ChartTypeOptions.map((item) => (
             <MenuItem value={item.split(" ").join("")} key={`${item} select`}>
               {item}
             </MenuItem>

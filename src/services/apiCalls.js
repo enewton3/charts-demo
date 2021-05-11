@@ -10,6 +10,26 @@ export const getData = async (type, cmd) => {
     ["Houston, TX", 2099000, 1953000],
     ["Philadelphia, PA", 1526000, 1517000],
   ];
+  // let newData = [];
+
+  // respData.forEach((row) => {
+  //   let newRow = [];
+  //   row.forEach((column) => {
+  //     if (parseInt(column)}
+  //   });
+  //   newData.push(newRow);
+  // });
+
+  // for (let i = 0; i < respData.length; i++) {
+  //   if (i === 0) newData.push(respData[0])
+  //   let newRow = []
+  //   for (let j = 0; j < respData[i].length; j++) {
+
+  //   }
+  // }
+
+  // console.log(newData);
+
   return response;
 };
 

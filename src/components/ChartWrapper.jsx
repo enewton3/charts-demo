@@ -5,14 +5,12 @@ import { getData } from "../services/apiCalls";
 export default function ChartWrapper(props) {
   const [data, setData] = useState([]);
   const { chartQuery, options, chartType } = props;
-  console.log(props);
   const { type, cmd } = chartQuery;
 
   //make API CALL here to get updated chart data
   const fetchData = async (type, cmd) => {
     const resp = await getData(type, cmd);
     setData(resp);
-    console.log(resp);
     return resp;
   };
 
@@ -26,8 +24,10 @@ export default function ChartWrapper(props) {
         //Data returned from API
         data
       }
+      loader={<div>Loading Chart</div>}
       options={options}
-      chartType={chartType}
+      chartType={chartType || "BarChart"}
+      legendToggle={false}
     />
   );
 }
