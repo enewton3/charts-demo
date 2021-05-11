@@ -1,4 +1,4 @@
-import { TextField } from "@material-ui/core";
+import { Button, MenuItem, Select, TextField } from "@material-ui/core";
 import React from "react";
 
 export default function DataInput({ data, setData }) {
@@ -13,12 +13,13 @@ export default function DataInput({ data, setData }) {
 
   return (
     <div>
-      <TextField
-        label="Column 1 label"
-        value={data[0][0]}
-        onChange={handleChange}
-      />
-      <TextField label="Column 2 label" />
+      <TextField label="Cmd String" onChange={handleChange} />
+      <Select>
+        <MenuItem>Query</MenuItem>
+        <MenuItem>Subr</MenuItem>
+      </Select>
+      <Button>Make Call</Button>
+      {/* <TextField label="Column 2 label" />
       <TextField label="Column 3 label" />
       <TextField
         value={data}
@@ -27,7 +28,7 @@ export default function DataInput({ data, setData }) {
         multiline
         fullWidth
         label="Copy data as a 2D Array here"
-      />
+      /> */}
     </div>
   );
 }
