@@ -3,6 +3,7 @@ import Chart from "react-google-charts";
 import RGL, { WidthProvider } from "react-grid-layout";
 import "../styles/react-grid-styles.css";
 import "../styles/react-resizable-styles.css";
+import ChartWrapper from "./ChartWrapper";
 
 const ReactGridLayout = WidthProvider(RGL);
 
@@ -10,34 +11,28 @@ export default function DashboardEditor(props) {
   const { charts } = props;
   const [layout, setLayout] = useState([]);
   const [resizeToggle, setResizeToggle] = useState(false);
-
-  //Generate Layout array for Grid layout from Charts array based on either previously saved layout, or default values
-  const generateLayout = () => {
-    const layout = charts.map((item, i) => {
-      return {
-        x: item.x || i * 2,
-        y: item.y || i * 2,
-        w: item.w || 3,
-        h: item.h || 3,
-        i: item.options.title,
-        minW: 3,
-        minH: 3,
-        maxH: 5,
-        maxW: 5,
-      };
-    });
-    return layout;
-  };
-
-  //Generate Layout on rerender
-  useEffect(() => {
-    setLayout(generateLayout());
-  }, [charts]);
+  const [newDataGrid, setNewDataGrid] = useState({
+    x: 0,
+    y: 0,
+    h: 0,
+    w: 0,
+  });
 
   const handleResize = () => {
     setResizeToggle((prev) => !prev);
     console.log(resizeToggle);
   };
+
+  const getLayout = () => {
+    const layoutArray = charts.map((chart) => chart.datagrid);
+    console.log(layoutArray);
+  };
+
+  useEffect(() => {
+    if (charts.length) {
+      getLayout();
+    }
+  }, [charts]);
 
   return (
     <ReactGridLayout
@@ -59,6 +54,7 @@ export default function DashboardEditor(props) {
       onResizeStop={handleResize}
     >
       {charts.map((chart, index) => {
+        // console.log(chart);
         return (
           <div
             style={{
@@ -66,15 +62,12 @@ export default function DashboardEditor(props) {
               backgroundColor: "white",
             }}
             key={`${chart.options.title} ${index}`}
+            data-grid={{ ...chart.datagrid }}
           >
-            <Chart
-              width={chart.options.width}
-              height={chart.options.height}
-              chartType={chart.type || "BarChart"}
-              loader={<div>Loading Chart</div>}
-              data={chart.data}
+            <ChartWrapper
+              chartQuery={chart.data}
               options={chart.options}
-              legendToggle={false}
+              chartType={chart.type}
             />
           </div>
         );
