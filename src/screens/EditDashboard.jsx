@@ -4,6 +4,7 @@ import ChartEdit from "../components/ChartEdit";
 import DashboardEditor from "../components/DashboardEditor";
 import DashboardSelect from "../components/DashboardSelect";
 import DataInput from "../components/DataInput";
+import Editor from "../components/Editor";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,7 +77,9 @@ export default function EditDashboard(props) {
     <div className={classes.root}>
       <div className={classes.topSection}>
         <div className={classes.saved}>
-          {currentDashboard ? <div>***{currentDashboard.name}***</div> : null}
+          {currentDashboard.name ? (
+            <div>***{currentDashboard.name}***</div>
+          ) : null}
           <DashboardEditor charts={dashboardCharts} />
         </div>
         <div className={classes.select}>
@@ -89,7 +92,8 @@ export default function EditDashboard(props) {
       </div>
       <div className={classes.bottomSection}>
         <div className={classes.dataInput}>
-          <DataInput data={data} setData={setData} type={type} />
+          {/* <DataInput data={data} setData={setData} type={type} /> */}
+          {/* <Editor /> */}
         </div>
         <div className={classes.options}>
           <ChartEdit

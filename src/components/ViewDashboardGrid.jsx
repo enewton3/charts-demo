@@ -61,6 +61,10 @@ export default function ViewDashboardGrid({ currentDashboard }) {
         {currentDashboard.tiles?.map((chart, index) => {
           return (
             <div
+              x={chart.x}
+              y={chart.y}
+              w={chart.w}
+              h={chart.h}
               style={{
                 border: "1px solid black",
                 backgroundColor: "white",
