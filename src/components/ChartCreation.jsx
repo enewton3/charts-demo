@@ -78,7 +78,7 @@ export default function ChartCreation({ addChart }) {
     maxW: 5,
     minH: 3,
     minW: 3,
-    i: options.title,
+    i: options.title.split(" ").join(""),
   };
 
   const fetchData = async (cmd, type) => {
