@@ -1,69 +1,71 @@
-import React from "react";
+import React, { Component, useState } from "react";
+import Chart from "react-google-charts";
 
 export default function Editor() {
+  const [chartEditor, setChartEditor] = useState(null);
+  const [chartWrapper, setChartWrapper] = useState(null);
+  const [google, setGoogle] = useState(null);
+  const [type, setType] = useState("");
+  const [options, setOptions] = useState({
+    title: "",
+    chartArea: {},
+    hAxis: {
+      title: "",
+      minValue: 0,
+    },
+    vAxis: {
+      title: "",
+    },
+    height: "100%",
+    width: "100%",
+    legend: "",
+  });
+  const [data, setData] = useState([
+    ["City", "2010 Population", "2000 Population"],
+    ["New York City, NY", 8175000, 8008000],
+    ["Los Angeles, CA", 3792000, 3694000],
+    ["Chicago, IL", 2695000, 2896000],
+    ["Houston, TX", 2099000, 1953000],
+    ["Philadelphia, PA", 1526000, 1517000],
+  ]);
+
   return (
-    <Component
-      initialState={{ chartEditor: null, chartWrapper: null, google: null }}
-    >
-      {(component) => {
-        return (
-          <div>
-            <button
-              onClick={() => {
-                const { google, chartEditor, chartWrapper } = component.state;
-                if (
-                  chartWrapper === null ||
-                  google === null ||
-                  chartEditor === null
-                )
-                  return;
-                chartEditor.openDialog(chartWrapper);
-                google.visualization.events.addListener(
-                  chartEditor,
-                  "ok",
-                  () => {
-                    const newChartWrapper = chartEditor.getChartWrapper();
-                    newChartWrapper.draw();
-                    const newChartOptions = newChartWrapper.getOptions();
-                    const newChartType = newChartWrapper.getChartType();
-                    console.log("Chart type changed to ", newChartType);
-                    console.log("Chart options changed to ", newChartOptions);
-                  }
-                );
-              }}
-            >
-              Edit data
-            </button>
-            <Chart
-              width={"600px"}
-              height={"400px"}
-              chartType="ScatterChart"
-              loader={<div>Loading Chart</div>}
-              data={[
-                ["Age", "Weight"],
-                [8, 12],
-                [4, 5.5],
-                [11, 14],
-                [4, 5],
-                [3, 3.5],
-                [6.5, 7],
-              ]}
-              options={{
-                title: "Age vs. Weight comparison",
-                hAxis: { title: "Age", minValue: 0, maxValue: 15 },
-                vAxis: { title: "Weight", minValue: 0, maxValue: 15 },
-                legend: "none",
-              }}
-              rootProps={{ "data-testid": "1" }}
-              getChartEditor={({ chartEditor, chartWrapper, google }) => {
-                component.setState({ chartEditor, chartWrapper, google });
-                console.log("Get Chart Editor");
-              }}
-              chartPackages={["corechart", "controls", "charteditor"]}
-            />
-          </div>
-        );
-      }}
-    </Component>
+    <div>
+      <button
+        onClick={() => {
+          if (chartWrapper === null || google === null || chartEditor === null)
+            return;
+          chartEditor.openDialog(chartWrapper);
+          google.visualization.events.addListener(chartEditor, "ok", () => {
+            const newChartWrapper = chartEditor.getChartWrapper();
+            newChartWrapper.draw();
+            const newChartOptions = newChartWrapper.getOptions();
+            const newChartType = newChartWrapper.getChartType();
+            console.log("Chart type changed to ", newChartType);
+            setType(newChartType);
+            console.log("Chart options changed to ", newChartOptions);
+            setOptions({ newChartOptions, height: "100%", width: "100%" });
+          });
+        }}
+      >
+        Edit data
+      </button>
+      <Chart
+        width={"100%"}
+        height={"100%"}
+        chartType="ScatterChart"
+        loader={<div>Loading Chart</div>}
+        data={data}
+        options={options}
+        rootProps={{ "data-testid": "1" }}
+        getChartEditor={({ chartEditor, chartWrapper, google }) => {
+          setChartEditor(chartEditor);
+          setChartWrapper(chartWrapper);
+          setGoogle(google);
+          console.log("Get Chart Editor");
+        }}
+        chartPackages={["corechart", "controls", "charteditor"]}
+      />
+    </div>
   );
 }
